@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Upload to AWS') {
+        stage('Upload to AWS now') {
             steps {
                 sh 'echo "Connecting to AWS now"'
                 withAWS(region: 'us-east-2', credentialsId: 'myaccess') {
