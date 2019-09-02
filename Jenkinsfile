@@ -4,14 +4,13 @@ pipeline {
         stage('Upload to AWS') {
             steps {
                 sh 'echo "Connecting to AWS Region"'
-                    withAWS(region:'us-east-2') {
-                        // do something
-                    }
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+                withAWS(credentials: 'devops', region: 'us-east-2') {
+                    sh 'aws iam get-user'
+                    sh 'echo "index.html">index.html'
+                    s3Upload(file:'index.html', bucket:'dopheide-jenkins-s3', path:'/')
+                }
             }
+
         }
     }
 }
