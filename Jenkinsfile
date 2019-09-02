@@ -4,7 +4,7 @@ pipeline {
         stage('Upload to AWS') {
             steps {
                 sh 'echo "Connecting to AWS Region"'
-                withAWS(credentials: 'devops', region: 'us-east-2') {
+                withAWS(credentials: 'Jenkins', region: 'us-east-2') {
                     sh 'aws iam get-user'
                     sh 'echo "index.html">index.html'
                     s3Upload(file:'index.html', bucket:'dopheide-jenkins-s3', path:'/test')
