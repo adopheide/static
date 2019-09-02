@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Upload to AWS') {
             steps {
-                sh 'echo "Connecting to AWS Region"'
+                sh 'echo "Connecting to AWS"'
                 withAWS(credentials: 'Jenkins', region: 'us-east-2') {
                     sh 'aws iam get-user'
                     sh 'echo "index.html">index.html'
