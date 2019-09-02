@@ -16,6 +16,7 @@ pipeline {
                     sh 'echo "index.html">index.html'
                     s3Upload(file:'/var/lib/jenkins/workspace/static_master/index.html', bucket:'dopheide-jenkins-s3', path:'', acl:'PublicRead')
                 }
+                sh 'echo "Upload complete"'
             }
         }
     }
